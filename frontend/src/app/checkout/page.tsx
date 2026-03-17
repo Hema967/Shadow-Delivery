@@ -1,25 +1,24 @@
 "use client";
 
 export default function Checkout() {
+  const placeOrder = () => {
+    const ordersRaw = localStorage.getItem("orders");
+    const orders = ordersRaw ? (JSON.parse(ordersRaw) as unknown[]) : [];
+    if (orders.length === 0) {
+      alert("No items found. Please add items to cart first.");
+      return;
+    }
+
+    alert("Order placed successfully ✅");
+  };
+
   return (
     <div style={{ padding: "30px" }}>
       <h1>🧾 Checkout</h1>
 
-      <div style={{ marginTop: "20px" }}>
-        <h3>Total Amount: ₹200</h3>
+      <h3>Total: ₹200</h3>
 
-        <button
-          style={{
-            marginTop: "20px",
-            padding: "12px 20px",
-            background: "green",
-            color: "white",
-            borderRadius: "8px",
-          }}
-        >
-          Pay with UPI
-        </button>
-      </div>
+      <button onClick={placeOrder}>Place Order</button>
     </div>
   );
 }

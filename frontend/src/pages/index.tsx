@@ -48,6 +48,16 @@ export default function Home() {
     [cart]
   );
 
+  const placeOrder = () => {
+    if (cart.length === 0) {
+      alert("Cart is empty");
+      return;
+    }
+
+    localStorage.setItem("orders", JSON.stringify(cart));
+    alert("Order placed successfully ✅");
+  };
+
   return (
     <div>
       <nav
@@ -60,7 +70,12 @@ export default function Home() {
         }}
       >
         <h2>Shadow</h2>
-        <div>Cart 🛒 ({cartCount})</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <a href="/orders">
+            <button>Orders</button>
+          </a>
+          <div>Cart 🛒 ({cartCount})</div>
+        </div>
       </nav>
 
       <div style={{ padding: "30px" }}>
@@ -116,6 +131,18 @@ export default function Home() {
           ))
         )}
         <h3>Total: ₹{total}</h3>
+
+        <button
+          onClick={placeOrder}
+          style={{
+            padding: "10px",
+            background: "green",
+            color: "white",
+            borderRadius: "5px",
+          }}
+        >
+          Place Order
+        </button>
 
         <a href="/checkout">
           <button
