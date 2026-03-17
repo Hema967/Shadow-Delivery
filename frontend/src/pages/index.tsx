@@ -116,6 +116,20 @@ export default function Home() {
           ))
         )}
         <h3>Total: ₹{total}</h3>
+
+        <a href="/checkout">
+          <button
+            style={{
+              marginTop: "12px",
+              padding: "10px 20px",
+              background: "green",
+              color: "white",
+              borderRadius: "8px",
+            }}
+          >
+            Go to Checkout
+          </button>
+        </a>
       </div>
     </div>
   );
